@@ -31,6 +31,6 @@ class GlobalDefaultPermissions(permissions.BasePermission):
             'PATCH': 'change',
             'DELETE': 'delete',
             'OPTIONS': 'view',
-            'HEAD': 'view', 
+            'HEAD': 'view',
         }
         return method_actions.get(method, '')
