@@ -13,7 +13,7 @@ class GlobalDefaultPermissions(permissions.BasePermission):
             return False
 
         return request.user.has_perm(model_permission_codename)
-    
+
     def __get_model_permission_codename(self, method, view):
         try:
             model_name = view.queryset.model._meta.model_name
@@ -22,15 +22,15 @@ class GlobalDefaultPermissions(permissions.BasePermission):
             return f'{app_label}.{action}_{model_name}'
         except AttributeError:
             return None
-    
+
     def __action_sufix(self, method):
-        method_actions = { 
-            'GET': 'view', 
-            'POST': 'add', 
-            'PUT': 'change', 
-            'PATCH': 'change', 
-            'DELETE': 'delete', 
-            'OPTIONS': 'view', 
+        method_actions = {
+            'GET': 'view',
+            'POST': 'add',
+            'PUT': 'change',
+            'PATCH': 'change',
+            'DELETE': 'delete',
+            'OPTIONS': 'view',
             'HEAD': 'view', 
         }
         return method_actions.get(method, '')
