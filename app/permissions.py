@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class GlobalDefaultPermissions(permissions.BasePermission):
+class GlobalDefaultPermission(permissions.BasePermission):
 
     def has_permission(self, request, view):
         model_permission_codename = self.__get_model_permission_codename(
